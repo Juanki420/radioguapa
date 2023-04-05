@@ -45,7 +45,7 @@
             <script>
                 function getGif() {
                     var xhr = new XMLHttpRequest();
-                    xhr.open("GET", "https://api.giphy.com/v1/gifs/random?api_key=99wGqueq1SoKH1MJN3a6xNu2Ppmc8W9K", true);
+                    xhr.open("GET", "http://api.giphy.com/v1/gifs/random?api_key=99wGqueq1SoKH1MJN3a6xNu2Ppmc8W9K", true);
                     xhr.onload = function() {
                         if (this.status === 200) {
                             var response = JSON.parse(this.responseText);
