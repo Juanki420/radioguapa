@@ -1,0 +1,7 @@
+var count = 0;
+		var clicks = document.getElementById("clicks");
+
+		document.addEventListener("click", function() {
+			count++;
+			clicks.innerHTML = "Número de toques/clicks: " + count;
+		});

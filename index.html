@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ole Los Caracole</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+		<h1 class="red yellow green">Música de calidad aquí</h1>
+		<p>¡Bienvenido a nuestra página de música! Aquí encontrarás una amplia selección de canciones de calidad para disfrutar en cualquier momento. Nuestro catálogo incluye música de diferentes géneros y épocas, para que puedas encontrar justo lo que estás buscando.</p>
+		<p>Además, también ofrecemos recomendaciones personalizadas y listas de reproducción para que puedas descubrir nuevas canciones y artistas que te encantarán. ¡No esperes más para disfrutar de la mejor música en línea!</p>
+	</div>
+
+	<button onclick="playSong()">Reproducir canción</button>
+
+	<audio id="myAudio" controls>
+        <source src="http://212.83.164.82:8001/40almeria.mp3" type="audio/aac">
+        Tu navegador no soporta la reproducción de audio en línea.
+      </audio>
+
+	<script>
+		function playSong() {
+  			var audio = document.getElementById("myAudio");
+  			audio.play();
+		}
+	</script>
+    <p1>¡Vaya Temazo!</p1>
+    <p id="clicks">Haz clic en la pantalla para empezar a contar</p>
+
+	<script>
+		var count = 0;
+		var clicks = document.getElementById("clicks");
+
+		document.addEventListener("click", function() {
+			count++;
+			clicks.innerHTML = "Número de toques/clicks: " + count;
+		});
+	</script>
+ 	<div class="container">
+		<h1>Generador de gifs aleatorios</h1>
+		<p>Haz clic en el botón para generar un gif aleatorio:</p>
+        <body>
+            <div id="gif-container" style="width: 100%; height: auto;"></div>
+            <button onclick="getGif()">Generar gif aleatorio</button>
+            <script>
+                function getGif() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "https://api.giphy.com/v1/gifs/random?api_key=99wGqueq1SoKH1MJN3a6xNu2Ppmc8W9K", true);
+                    xhr.onload = function() {
+                        if (this.status === 200) {
+                            var response = JSON.parse(this.responseText);
+                            var gifUrl = response.data.image_original_url;
+                            var gif = document.createElement("img");
+                            gif.src = gifUrl;
+                            gif.alt = "Gif aleatorio";
+                            var container = document.getElementById("gif-container");
+                            if (container) {
+                                container.innerHTML = "";
+                                container.appendChild(gif);
+                            }
+                        }
+                    }
+                    xhr.send();
+                }
+
+            </script>
+
+</body>
+</html>
